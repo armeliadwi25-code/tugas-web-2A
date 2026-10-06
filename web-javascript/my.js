@@ -1,2 +1,2 @@
-  // untuk memuncuknkan popup pesan
+  // untuk memunculkan popup pesan
         alert("Hello saya adalah javascript");
