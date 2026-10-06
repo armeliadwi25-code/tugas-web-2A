@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasir JS</title>
+</head>
+<body>
+    <h1>Kasir JS</h1>
+    <script type="text/javascript">
+       let nama  = prompt("Masukkan nama barang : ");
+       let harga = parseFloat(prompt("Masukkan harga barang : "));
+       let qty   = parseFloat(prompt("Masukkan jumlah beli (qty) : "));
+
+    //    menghitung total belanja
+       let total = harga * qty;
+
+    //    diskon 10% jika belanja lebih dari 50.000
+       let diskon = 0;
+       if (total > 50000) {
+           diskon = total * 0.10;
+       }
+
+    //    menghitung pembayaran
+       let pembayaran = total - diskon;
+
+    //    lebar isi struk (di dalam tanda + kiri dan kanan)
+       let LEBAR = 36;
+
+    //    fungsi membuat 1 baris struk, teks kiri dan kanan dipisah spasi
+       function baris(kiri, kanan = "") {
+           let spasi = LEBAR - kiri.length - kanan.length;
+           if (spasi < 1) spasi = 1;
+           return "+ " + kiri + " ".repeat(spasi) + kanan + " +\n";
+       }
+
+       let garis  = "+".repeat(LEBAR + 4) + "\n";
+       let kosong = baris("");
+
+    //    menampilkan struk belanja
+       document.write("<pre>");
+       document.write(garis);
+       document.write(kosong);
+       document.write(baris("nama     Harga     qty", "total"));
+       document.write(baris(nama));
+       document.write(baris("         " + harga.toLocaleString("id-ID") + "     " + qty, total.toLocaleString("id-ID")));
+       document.write(kosong);
+       document.write(baris("total belanja", total.toLocaleString("id-ID")));
+       document.write(baris("diskon", diskon.toLocaleString("id-ID")));
+       document.write(baris("pembayaran", pembayaran.toLocaleString("id-ID")));
+       document.write(kosong);
+       document.write(garis);
+       document.write("</pre>");
+    </script>
+</body>
+</html>
